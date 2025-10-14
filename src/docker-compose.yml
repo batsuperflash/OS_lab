@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  lab:
+    image: lab-processes:latest
+    build: .
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
+    working_dir: /lab
+    volumes:
+      - .:/lab
+    command: bash -c "make && strace -f -e trace=process,pipe,execve,waitpid ./parent"
+    tty: true
