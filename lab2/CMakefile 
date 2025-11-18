@@ -1,0 +1,22 @@
+IMAGE = convolution-lab
+
+build:
+	docker build -t $(IMAGE) .
+
+run:
+	docker run -it --rm $(IMAGE)
+
+strace:
+	docker run -it --rm $(IMAGE) strace -f ./convolution 2 100 3 1
+
+clean:
+	docker rmi $(IMAGE)
+
+help:
+	@echo "Команды:"
+	@echo "  make build  - сборка Docker образа"
+	@echo "  make run    - запуск программы (4 потока, 500x500)"
+	@echo "  make strace - анализ системных вызовов"
+	@echo "  make clean  - удаление образа"
+
+.PHONY: build run strace clean help
