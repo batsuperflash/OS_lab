@@ -1,0 +1,55 @@
+10    execve("./build/client", ["./build/client"], 0xffffdd86f188 /* 7 vars */) = 0
+10    rt_sigaction(SIGRT_1, {sa_handler=0xffffab75d480, sa_mask=[], sa_flags=SA_ONSTACK|SA_RESTART|SA_SIGINFO}, NULL, 8) = 0
+10    rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+10    rt_sigprocmask(SIG_BLOCK, ~[], [], 8) = 0
+10    clone(child_stack=0xffffab1ce6e0, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, parent_tid=[11], tls=0xffffab1cf660, child_tidptr=0xffffab1cef70) = 11
+10    rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+11    rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+11    rt_sigprocmask(SIG_BLOCK, ~[RTMIN RT_1], NULL, 8) = 0
+10    rt_sigprocmask(SIG_BLOCK, ~[], [], 8) = 0
+10    clone(child_stack=0xffffaa9be6e0, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, parent_tid=[12], tls=0xffffaa9bf660, child_tidptr=0xffffaa9bef70) = 12
+10    rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+12    rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+12    rt_sigprocmask(SIG_BLOCK, ~[RTMIN RT_1], NULL, 8) = 0
+12    socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 9
+12    connect(9, {sa_family=AF_UNIX, sun_path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+12    socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 9
+12    connect(9, {sa_family=AF_UNIX, sun_path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+12    socket(AF_INET, SOCK_DGRAM|SOCK_CLOEXEC|SOCK_NONBLOCK, IPPROTO_IP) = 9
+12    setsockopt(9, SOL_IP, IP_RECVERR, [1], 4) = 0
+12    connect(9, {sa_family=AF_INET, sin_port=htons(53), sin_addr=inet_addr("127.0.0.11")}, 16) = 0
+12    sendto(9, "t]\1\0\0\1\0\0\0\0\0\0\6server\0\0\1\0\1", 24, MSG_NOSIGNAL, NULL, 0) = 24
+12    recvfrom(9, "t]\201\200\0\1\0\1\0\0\0\0\6server\0\0\1\0\1\6server\0"..., 1024, 0, {sa_family=AF_INET, sin_port=htons(53), sin_addr=inet_addr("127.0.0.11")}, [28 => 16]) = 46
+12    socket(AF_INET, SOCK_STREAM|SOCK_CLOEXEC, IPPROTO_TCP) = 9
+12    connect(9, {sa_family=AF_INET, sin_port=htons(5555), sin_addr=inet_addr("172.25.0.2")}, 16) = -1 EINPROGRESS (Operation now in progress)
+12    getsockopt(9, SOL_SOCKET, SO_ERROR, [0], [4]) = 0
+12    setsockopt(9, SOL_TCP, TCP_NODELAY, [1], 4) = 0
+12    getsockname(9, {sa_family=AF_INET, sin_port=htons(53558), sin_addr=inet_addr("172.25.0.4")}, [128 => 16]) = 0
+12    getpeername(9, {sa_family=AF_INET, sin_port=htons(5555), sin_addr=inet_addr("172.25.0.2")}, [128 => 16]) = 0
+12    recvfrom(9, 0xffffa4001ef8, 12, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+12    sendto(9, "\377\0\0\0\0\0\0\0\1\177", 10, 0, NULL, 0) = 10
+12    recvfrom(9, "\377\0\0\0\0\0\0\0\1\177", 12, 0, NULL, NULL) = 10
+12    recvfrom(9, 0xffffa4001f02, 2, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+12    sendto(9, "\3", 1, 0, NULL, 0)    = 1
+12    recvfrom(9, "\3", 2, 0, NULL, NULL) = 1
+12    recvfrom(9, 0xffffa4001f03, 53, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+12    sendto(9, "\1NULL\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 53, 0, NULL, 0) = 53
+12    recvfrom(9, "\1NULL\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 53, 0, NULL, NULL) = 53
+12    recvfrom(9, 0xffffa4004788, 8192, 0, NULL, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+12    sendto(9, "\4)\5READY\vSocket-Type\0\0\0\6DEALER\10I"..., 43, 0, NULL, 0) = 43
+12    recvfrom(9, "\4)\5READY\vSocket-Type\0\0\0\6ROUTER\10I"..., 8192, 0, NULL, NULL) = 43
+10    --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+10    --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+10    --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+10    --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+10    --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+10    --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+12    sendto(9, "\0\6LOGIN;", 8, 0, NULL, 0) = 8
+11    rt_sigprocmask(SIG_BLOCK, ~[RT_1], NULL, 8) = 0
+11    exit(0)                           = ?
+11    +++ exited with 0 +++
+12    rt_sigprocmask(SIG_BLOCK, ~[RT_1], NULL, 8) = 0
+12    exit(0)                           = ?
+12    +++ exited with 0 +++
+10    exit_group(1)                     = ?
+10    +++ exited with 1 +++

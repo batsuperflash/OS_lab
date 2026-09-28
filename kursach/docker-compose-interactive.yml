@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  server:
+    build: .
+    container_name: battleship-server
+    ports:
+      - "5555:5555"
+    networks:
+      - game-net
+    volumes:
+      - ./logs:/logs
+    command: >
+      bash -c "
+        echo '🚀 SERVER STARTED (PID: $$)';
+        echo '🔍 Running with strace for system call analysis';
+        strace -f -o /logs/server.strace -e trace=network,process,signal ./build/server
+      "
+
+  client1:
+    build: .
+    container_name: battleship-client1
+    depends_on:
+      - server
+    networks:
+      - game-net
+    volumes:
+      - ./logs:/logs
+    stdin_open: true   # Важно для интерактивного ввода
+    tty: true          # Важно для интерактивного ввода
+    command: bash      # Просто запускаем bash для интерактивной работы
+
+  client2:
+    build: .
+    container_name: battleship-client2
+    depends_on:
+      - server
+    networks:
+      - game-net
+    volumes:
+      - ./logs:/logs
+    stdin_open: true   # Важно для интерактивного ввода
+    tty: true          # Важно для интерактивного ввода
+    command: bash      # Просто запускаем bash для интерактивной работы
+
+networks:
+  game-net:
+    driver: bridge
+    name: battleship_network
